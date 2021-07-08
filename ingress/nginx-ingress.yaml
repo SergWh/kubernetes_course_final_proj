@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ing
+spec:
+  rules:
+    - host: localhost
+      http:
+        paths:
+          - path: /kibana
+            pathType: Prefix
+            backend:
+              service:
+                name: kibana
+                port:
+                  number: 5601
+          - path: /web
+            pathType: Prefix
+            backend:
+              service:
+                name: web
+                port:
+                  number: 8085
